@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>全息交互实验室</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="gl"></canvas>
+    <div id="labels"></div>
+    <canvas id="hud"></canvas>
+
+    <header id="topbar">
+      <div class="brand"><span class="dot"></span>HOLO·LAB <small>人机交互 / 可视化融合概念</small></div>
+      <nav id="tabs"></nav>
+      <div class="tools">
+        <button id="btn-helmet" title="头盔 HUD 视角 (H)">HUD 头盔</button>
+        <button id="btn-gesture" title="摄像头手势控制 (G)">✋ 手势</button>
+      </div>
+    </header>
+
+    <aside id="panel">
+      <h2 id="scene-title"></h2>
+      <p id="scene-sub"></p>
+      <div id="scene-controls"></div>
+      <div id="inspector" class="hidden"></div>
+    </aside>
+
+    <div id="voice"><span class="who">J.A.R.V.I.S.</span><span id="voice-text">系统在线。</span></div>
+    <div id="hint"></div>
+    <video id="cam" playsinline muted></video>
+    <canvas id="cam-overlay"></canvas>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
