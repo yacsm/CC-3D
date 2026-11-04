@@ -12,6 +12,7 @@ import { createArmorScene } from './scenes/armor.js';
 import { createCrimeScene } from './scenes/crime.js';
 import { createBrainScene } from './scenes/brain.js';
 import { createGlobeScene } from './scenes/globe.js';
+import { createFusionScene } from './scenes/fusion.js';
 
 // ---------- 渲染基础 ----------
 const canvas = document.getElementById('gl');
@@ -62,7 +63,7 @@ const ui = {
 };
 
 const ctx = { renderer, camera, controls, hud, ui, bloom };
-const scenes = [createArmorScene(ctx), createCrimeScene(ctx), createBrainScene(ctx), createGlobeScene(ctx)];
+const scenes = [createArmorScene(ctx), createCrimeScene(ctx), createBrainScene(ctx), createGlobeScene(ctx), createFusionScene(ctx)];
 let active = null;
 
 // ---------- 场景切换 ----------

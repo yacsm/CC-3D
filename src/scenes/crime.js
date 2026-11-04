@@ -6,11 +6,11 @@ import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import { COLORS, dotTexture, rng, ease, holoGrid } from '../holo.js';
 import { panel, row, button, slider, note } from '../ui.js';
 
-const BLAST = new THREE.Vector3(0, 0.6, 2.2);
+export const BLAST = new THREE.Vector3(0, 0.6, 2.2);
 const T_MIN = -8, T_MAX = 22;
-const CCTV = new THREE.Vector3(-7.5, 4.2, 9);
+export const CCTV = new THREE.Vector3(-7.5, 4.2, 9);
 
-function buildCloud(rand) {
+export function buildCloud(rand, withPeople = true) {
   const pos = [], typ = [], rnd = [];
   const push = (x, y, z, t) => { pos.push(x, y, z); typ.push(t); rnd.push(rand()); };
   // 在长方体表面按面积采样
@@ -53,11 +53,11 @@ function buildCloud(rand) {
   });
   // 人群（简化人形）
   const person = (x, z, t = 1) => { cyl(x, z, 0.17, 1.35, 90, t); box(x, 1.55, z, 0.22, 0.26, 0.22, 400, t); };
-  for (let i = 0; i < 26; i++) {
+  if (withPeople) for (let i = 0; i < 26; i++) {
     const a = rand() * Math.PI * 2, r = 2 + rand() * 7;
     person(BLAST.x + Math.cos(a) * r, BLAST.z + Math.sin(a) * r * 0.7);
   }
-  person(BLAST.x, BLAST.z, 3); // 爆炸中心站着的那个人：线索
+  if (withPeople) person(BLAST.x, BLAST.z, 3); // 爆炸中心站着的那个人：线索
   return { pos: new Float32Array(pos), typ: new Float32Array(typ), rnd: new Float32Array(rnd) };
 }
 
